@@ -536,10 +536,12 @@ footer {
   }
   
   .container {
-    padding: 0 8vw;
+    padding-left: 8vw;
+    padding-right: 8vw;
   }
 
   .value-props {
+    padding-top: 8rem;
     padding-bottom: 8rem;
     margin-bottom: 4rem;
   }
@@ -568,7 +570,7 @@ footer {
   .value-props,
   .gallery-section,
   .cta-section {
-    padding: 5rem 0;
+    padding: 8rem 0 5rem;
     /* Switch from vw to static rem so gaps scale properly on thin phones */
   }
 
@@ -590,7 +592,8 @@ footer {
 
   /* Core Layout Edge Paddings */
   .container {
-    padding: 0 8vw;
+    padding-left: 8vw;
+    padding-right: 8vw;
     /* Dramatically increase global edge padding for phones */
   }
 }

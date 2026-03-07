@@ -34,12 +34,16 @@ export default async function PortfolioPage() {
         console.error('Error reading archives directory:', error);
     }
 
-    // Sort newest year first, then alphanumerically by filename to securely group shots from the same set
+    // Sort newest year first, then prioritize "Pusaka" images, then alphanumerically
     imageFiles.sort((a, b) => {
         if (a.year !== b.year) {
             return b.year.localeCompare(a.year); // Descending year
         }
-        return a.filename.localeCompare(b.filename); // Ascending sets
+        const aIsPusaka = a.filename.toLowerCase().includes('pusaka');
+        const bIsPusaka = b.filename.toLowerCase().includes('pusaka');
+        if (aIsPusaka && !bIsPusaka) return -1;
+        if (!aIsPusaka && bIsPusaka) return 1;
+        return a.filename.localeCompare(b.filename); // Ascending within group
     });
 
     const imagesData: PortfolioImage[] = imageFiles.map((fileInfo) => ({
